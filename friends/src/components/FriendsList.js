@@ -18,7 +18,6 @@ class FriendsList extends React.Component {
   }
 
   getData = () => {
-    // fetch protected data from the API using axiosWithAuth
     axiosWithAuth()
       .get('/friends')
       .then((res) => {
@@ -47,14 +46,12 @@ class FriendsList extends React.Component {
     this.setState({
       addFriend: { name: '', age: '', email: '' },
     });
-    // this.state.addFriend({ name: '', age: '', email: '' });
     axiosWithAuth()
       .post('/friends', this.state.addFriend)
       .then((res) => {
         this.setState({
           addFriend: res.data,
         });
-        // this.state.addFriend(res.data);
         this.props.history.push('/protected');
         this.getData();
       })
@@ -72,8 +69,6 @@ class FriendsList extends React.Component {
 
   render() {
     const friendsList = this.formatData();
-    console.log(friendsList);
-
     return (
       <div className="friendsList">
         <div>
